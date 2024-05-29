@@ -1,3 +1,4 @@
+use clap::{Arg, Command};
 use std::net::{SocketAddr, TcpStream};
 use std::time::Duration;
 use std::io::{Read};
@@ -40,12 +41,65 @@ async fn scan_port(ip: Arc<String>, port: u16, semaphore: Arc<Semaphore>) {
 
 #[tokio::main]
 async fn main() {
-    let ip = Arc::new("127.0.0.1".to_string()); // Replace with the target IP
+    let matches = Command::new("S0t0n banner Scanner")
+        .version("1.0")
+        .author("Your Name <your.email@example.com>")
+        .about("Scans ports and grabs banners")
+        .arg(
+            Arg::new("ip")
+                .short('i')
+                .long("ip")
+                .value_name("IP")
+                .help("Sets the target IP address")
+                .required(true)
+                .value_parser(clap::value_parser!(String)),
+        )
+        .arg(
+            Arg::new("range")
+                .short('r')
+                .long("range")
+                .value_name("RANGE")
+                .help("Sets the port range to scan (e.g., 1-1024)")
+                .required(true)
+                .value_parser(clap::value_parser!(String)),
+        )
+        .get_matches();
+
+    let ip = matches.get_one::<String>("ip").unwrap().to_string();
+    let range = matches.get_one::<String>("range").unwrap();
+    let parts: Vec<&str> = range.split('-').collect();
+    if parts.len() != 2 {
+        eprintln!("Invalid range format. Use the format: start-end");
+        return;
+    }
+
+    let start_port: u16 = match parts[0].parse() {
+        Ok(port) => port,
+        Err(_) => {
+            eprintln!("Invalid start port.");
+            return;
+        }
+    };
+
+    let end_port: u16 = match parts[1].parse() {
+        Ok(port) => port,
+        Err(_) => {
+            eprintln!("Invalid end port.");
+            return;
+        }
+    };
+
+    if start_port > end_port {
+        eprintln!("Start port must be less than or equal to end port.");
+        return;
+    }
+
+    let ip = Arc::new(ip);
     let semaphore = Arc::new(Semaphore::new(MAX_CONCURRENT_TASKS));
     
     let mut tasks = vec![];
 
-    for port in 1..1024 {
+    for port in start_port..=end_port {
         let ip_clone = Arc::clone(&ip);
         let semaphore_clone = Arc::clone(&semaphore);
 
