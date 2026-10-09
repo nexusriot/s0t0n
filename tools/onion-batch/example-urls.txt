@@ -1,0 +1,4 @@
+# One URL per line. Lines starting with '#' are ignored.
+# Replace these with the onion services you are authorized to check.
+# http://example1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.onion
+# http://example2xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.onion

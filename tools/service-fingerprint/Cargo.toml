@@ -1,0 +1,10 @@
+[package]
+name = "service-fingerprint"
+version = "0.1.0"
+edition = "2021"
+description = "Protocol-aware TCP service fingerprinter (successor to bannerscan)"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+clap = { version = "4", features = ["derive"] }
+netutil = { path = "../netutil" }

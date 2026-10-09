@@ -1,0 +1,13 @@
+[package]
+name = "netutil"
+version = "0.1.0"
+edition = "2021"
+description = "Reusable IPv4/CIDR iteration helpers for the s0t0n tools"
+
+[lib]
+name = "netutil"
+path = "src/lib.rs"
+
+[[bin]]
+name = "cidr-expand"
+path = "src/bin/cidr-expand.rs"

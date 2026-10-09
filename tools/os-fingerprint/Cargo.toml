@@ -1,0 +1,8 @@
+[package]
+name = "os-fingerprint"
+version = "0.1.0"
+edition = "2021"
+description = "Guess remote OS family from ICMP TTL heuristics"
+
+[dependencies]
+socket2 = { version = "0.5", features = ["all"] }

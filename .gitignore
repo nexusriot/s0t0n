@@ -1,3 +1,40 @@
-.venv/
-.vscode/
+# ---- Rust ----
 target/
+
+# ---- Python ----
+.venv/
+__pycache__/
+*.pyc
+
+# ---- Go compiled binaries (built in place, named after their directory) ----
+/tools/arp-watch/arp-watch
+/tools/dir-brute/dir-brute
+/tools/dns-sniff/dns-sniff
+/tools/go-arpscan/go-arpscan
+/tools/http-probe/http-probe
+/tools/icmp-sweep/icmp-sweep
+/tools/ja3/ja3
+/tools/mdns-ssdp-discover/mdns-ssdp-discover
+/tools/mini-honeypot/mini-honeypot
+/tools/net-neighbors/net-neighbors
+/tools/pcap-summary/pcap-summary
+/tools/port-knock/port-knock
+/tools/smb-enum/smb-enum
+/tools/snmp-check/snmp-check
+/tools/ssh-audit-lite/ssh-audit-lite
+/tools/tcp-ping/tcp-ping
+/tools/tech-detect/tech-detect
+/tools/whois-asn/whois-asn
+# go-arpscan builds to a custom binary name (see its README)
+/tools/go-arpscan/arpscan
+
+# ---- Editor / OS noise ----
+.DS_Store
+*.swp
+*~
+.idea/
+.vscode/
+
+# ---- Local scratch / captures ----
+*.pcap
+*.ndjson

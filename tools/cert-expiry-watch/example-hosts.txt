@@ -1,0 +1,4 @@
+# one host or host:port per line
+example.com
+expired.badssl.com
+github.com:443

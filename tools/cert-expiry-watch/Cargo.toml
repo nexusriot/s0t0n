@@ -1,0 +1,11 @@
+[package]
+name = "cert-expiry-watch"
+version = "0.1.0"
+edition = "2021"
+description = "Alert when TLS certificates on a host list are near expiry"
+
+[dependencies]
+tls-inspect = { path = "../tls-inspect" }
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+clap = { version = "4", features = ["derive"] }
+anyhow = "1"

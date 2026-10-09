@@ -1,0 +1,8 @@
+[package]
+name = "scanengine"
+version = "0.1.0"
+edition = "2021"
+description = "Shared async scan engine: bounded concurrency, rate limiting, retries"
+
+[dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "sync", "time", "macros"] }

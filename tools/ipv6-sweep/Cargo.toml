@@ -1,0 +1,11 @@
+[package]
+name = "ipv6-sweep"
+version = "0.1.0"
+edition = "2021"
+description = "TCP-connect liveness sweep across an IPv6 CIDR"
+
+[dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "time"] }
+clap = { version = "4", features = ["derive"] }
+netutil = { path = "../netutil" }
+scanengine = { path = "../scanengine" }

@@ -1,0 +1,10 @@
+[package]
+name = "synscan"
+version = "0.1.0"
+edition = "2021"
+description = "Half-open (SYN) TCP port scanner"
+
+[dependencies]
+pnet = "0.35"
+netutil = { path = "../netutil" }
+clap = { version = "4", features = ["derive"] }
